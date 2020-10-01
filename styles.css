@@ -1,0 +1,23 @@
+.skewed {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 100%;
+  height: 60vh;
+  background: #40566d;
+  z-index: -1;
+  transform: skewY(3deg);
+  transform-origin: top right;
+}
+
+.hero .container {
+  height: 75vh;
+  margin-top: 10%;
+}
+
+.hero h1,
+h3 {
+  color: aliceblue;
+}

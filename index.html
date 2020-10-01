@@ -11,6 +11,7 @@
       integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <!-- Navegacion -->
@@ -49,12 +50,45 @@
               >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">LogOut</a>
+              <a class="nav-link" href="#" id="logout">LogOut</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
+
+    <!-- maincontent -->
+    <div class="container p-4">
+      <div class="row">
+        <div class="col-md-6 offset--md-3">
+          <ul class="list-group post">
+            <li class="list-group-item">
+              <h3>Titulo</h3>
+              <p>loremsdasaddasd</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- maincontent -->
+
+    <!-- FIN NAV-->
+    <!-- MAIN-->
+    <section class="hero">
+      <div class="skewed"></div>
+      <div class="container">
+        <div class="hero-title">
+          <h1>Bienvenidos a la sarasa</h1>
+          <h3>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Minima
+            culpa molestiae nemo explicabo rem beatae asperiores cum corrupti,
+            natus quis deleniti amet quisquam, vero tenetur iure itaque,
+            exercitationem mollitia impedit.
+          </h3>
+        </div>
+      </div>
+    </section>
+    <!-- FIN MAIN-->
     <!-- modal signUp-->
     <div
       class="modal fade"
@@ -142,7 +176,24 @@
                 />
               </div>
 
-              <button type="submit" class="btn btn-primary">Login</button>
+              <button type="submit" class="btn btn-secondary btn-block">
+                Login
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-info btn=btn-block"
+                id="googleLogin"
+              >
+                Login with Google
+              </button>
+              <button
+                type="button"
+                class="btn btn-info btn=btn-block"
+                id="facebookLogin"
+              >
+                Login with Facebook
+              </button>
             </form>
           </div>
         </div>
@@ -173,6 +224,7 @@
     <!-- TODO: Add SDKs for Firebase products that you want to use
       https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.21.1/firebase-firestore.js"></script>
 
     <script>
       // Your web app's Firebase configuration
@@ -188,6 +240,7 @@
       // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       const auth = firebase.auth();
+      const fs = firebase.firestore();
     </script>
     <!-- custom code -->
     <script src="./main.js"></script>

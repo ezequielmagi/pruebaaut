@@ -31,3 +31,67 @@ signinForm.addEventListener("submit", (e) => {
     console.log("sign in");
   });
 });
+
+//logout
+const logout = document.querySelector("#logout");
+
+logout.addEventListener("click", (e) => {
+  e.preventDefault();
+  auth.signOut().then(() => {
+    console.log("sing out");
+  });
+});
+
+//Google Login
+const googleButton = document.querySelector("#googleLogin");
+googleButton.addEventListener("click", (e) => {
+  // console.log("click google");
+  const provider = new firebase.auth.GoogleAuthProvider();
+  auth
+    .signInWithPopup(provider)
+    .then((result) => {
+      console.log("Google sign in");
+      signupform.reset();
+      $("#signinModal").modal("hide");
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+//post
+const postList = document.querySelector(".post");
+const setupPost = (data) => {
+  if (data.length) {
+    let html = "";
+    data.forEach((doc) => {
+      const post = doc.data();
+      console.log(post);
+      const li = `
+      <li class="list-group-item list-group-item-action">
+        <h5>${post.title}</h5>
+        <p>${post.description}</p>
+      </li>
+      `;
+      html += li;
+    });
+    postList.innerHTML = html;
+  } else {
+    postList.innerHTML = "<p>Logeate para ver las publicaciones</p>";
+  }
+};
+// events
+//listar para usuarios autenticados
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    // console.log("auth: singin");
+    fs.collection("post")
+      .get()
+      .then((snapshot) => {
+        console.log(snapshot.docs);
+        setupPost(snapshot.docs);
+      });
+  } else {
+    setupPost([]);
+  }
+});
